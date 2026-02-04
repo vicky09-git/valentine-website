@@ -40,9 +40,12 @@ body {
 }
 
 .character {
-  width: 100px;
-  margin: 10px auto;
+  width: 120px;
+  image-rendering: pixelated;
+  margin: 20px auto;
+  display: block;
 }
+
 
 .buttons {
   display: flex;
