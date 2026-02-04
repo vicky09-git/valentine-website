@@ -47,24 +47,28 @@ h1 {
 
 /* Floating hearts */
 .heart {
-  position: absolute;
-  color: #ff4d6d;
-  font-size: 14px;
-  animation: float 6s linear infinite;
+  position: fixed;
+  top: -10vh;
+  color: #ff5c8a;
+  font-size: 16px;
+  animation: fall linear infinite;
+  pointer-events: none;
+  z-index: 2;
   opacity: 0.8;
 }
 
-@keyframes float {
+@keyframes fall {
   0% {
-    transform: translateY(100vh);
+    transform: translateY(-10vh) scale(1);
     opacity: 0;
   }
-  20% {
+  10% {
     opacity: 1;
   }
   100% {
-    transform: translateY(-10vh);
+    transform: translateY(110vh) scale(1.2);
     opacity: 0;
   }
 }
+
 
