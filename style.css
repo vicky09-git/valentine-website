@@ -30,7 +30,7 @@ body::before {
 }
 
 .envelope {
-  width: 120px;
+  width: 250px;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -67,3 +67,4 @@ h1 {
     opacity: 0;
   }
 }
+
