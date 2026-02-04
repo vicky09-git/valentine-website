@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Be My Valentine 💌</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Be My Valentine 💖</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="container">
-  <h1>💘 Will You Be My Valentine? 💘</h1>
-  <button id="yesBtn">YES ❤️</button>
-  <button id="noBtn">NO 😢</button>
-</div>
-<script src="script.js"></script>
+  <div class="card">
+    <h1>💘 Will You Be My Valentine? 💘</h1>
+    <p>You make my heart skip a beat.</p>
+
+    <div class="buttons">
+      <button onclick="yesClick()">YES 🥰</button>
+      <button id="noBtn" onmouseover="moveNo()">NO 😢</button>
+    </div>
+
+    <p id="response"></p>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
