@@ -1,11 +1,16 @@
-function yesClick() {
-  document.getElementById("response").innerHTML =
-    "YAY!!! 💖🥹 You just made me the happiest person ever!";
-}
+// Floating hearts
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "♡";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 10 + 10 + "px";
+  document.body.appendChild(heart);
 
-function moveNo() {
-  const noBtn = document.getElementById("noBtn");
-  const x = Math.random() * 300 - 150;
-  const y = Math.random() * 300 - 150;
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
-}
+  setTimeout(() => heart.remove(), 6000);
+}, 300);
+
+// Envelope click
+document.querySelector(".envelope").addEventListener("click", () => {
+  window.location.href = "letter.html";
+});
