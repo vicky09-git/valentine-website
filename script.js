@@ -1,11 +1,11 @@
-// Floating hearts
+// ❤️ Heart shower
 function createHeart() {
   const heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.innerText = "♡";
+  heart.className = "heart";
 
+  heart.innerText = "❤️";
   heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = Math.random() * 12 + 12 + "px";
+  heart.style.fontSize = Math.random() * 12 + 14 + "px";
   heart.style.animationDuration = Math.random() * 3 + 4 + "s";
 
   document.body.appendChild(heart);
@@ -15,12 +15,12 @@ function createHeart() {
   }, 7000);
 }
 
-// Heart shower
-setInterval(createHeart, 200);
-
+setInterval(createHeart, 180);
 
 // Envelope click
-document.querySelector(".envelope").addEventListener("click", () => {
-  window.location.href = "letter.html";
-});
-
+const envelope = document.querySelector(".envelope");
+if (envelope) {
+  envelope.addEventListener("click", () => {
+    window.location.href = "letter.html";
+  });
+}
