@@ -51,5 +51,34 @@ body {
   display: block;
 }
 
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+  margin-top: 12px;
+}
+
+/* Base button */
+.buttons button {
+  background: #fff;
+  color: #000;
+  border: 3px solid #d62828;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 0;           /* sharp corners */
+  cursor: pointer;
+  box-shadow: none;
+}
+
+/* Hover effect (subtle) */
+.buttons button:hover {
+  background: #ffe5ec;
+}
+
+/* Active (pressed) */
+.buttons button:active {
+  transform: translateY(1px);
+}
 
 
