@@ -2,17 +2,20 @@
 // NO button runaway 😈
 // =====================
 const noBtn = document.getElementById("no");
-const container = document.querySelector(".content");
+const buttonsBox = document.querySelector(".buttons");
 
+// force absolute inside buttons
 noBtn.style.position = "absolute";
+noBtn.style.left = "10px";
+noBtn.style.top = "10px";
 
 noBtn.addEventListener("mouseenter", () => {
-  const padding = 10;
+  const padding = 5;
 
   const maxX =
-    container.clientWidth - noBtn.offsetWidth - padding;
+    buttonsBox.clientWidth - noBtn.offsetWidth - padding;
   const maxY =
-    container.clientHeight - noBtn.offsetHeight - padding;
+    buttonsBox.clientHeight - noBtn.offsetHeight - padding;
 
   const x = Math.random() * maxX;
   const y = Math.random() * maxY;
@@ -22,22 +25,26 @@ noBtn.addEventListener("mouseenter", () => {
 });
 
 
-
 // =====================
 // YES button magic 💖
 // =====================
 const yesBtn = document.getElementById("yes");
 const effects = document.getElementById("effects");
-const loveWindow = document.querySelector(".game-window");
+const gameWindow = document.querySelector(".game-window");
+
+let fired = false;
 
 yesBtn.addEventListener("click", () => {
-  // hide love window
-  loveWindow.style.transition = "opacity 0.4s, transform 0.4s";
-  loveWindow.style.opacity = "0";
-  loveWindow.style.transform = "scale(0.9)";
+  if (fired) return;
+  fired = true;
+
+  // fade out LOVE window
+  gameWindow.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+  gameWindow.style.opacity = "0";
+  gameWindow.style.transform = "scale(0.9)";
 
   setTimeout(() => {
-    loveWindow.style.display = "none";
+    gameWindow.style.display = "none";
   }, 400);
 
   showYayMessage();
@@ -51,16 +58,15 @@ yesBtn.addEventListener("click", () => {
 // =====================
 function showYayMessage() {
   const msg = document.createElement("div");
-  msg.innerText = "YAYYY ❤️";
+  msg.textContent = "YAYYY ❤️";
   msg.style.position = "fixed";
   msg.style.top = "50%";
   msg.style.left = "50%";
   msg.style.transform = "translate(-50%, -50%)";
-  msg.style.fontSize = "44px";
-  msg.style.color = "#d62828";
+  msg.style.fontSize = "42px";
   msg.style.fontWeight = "bold";
+  msg.style.color = "#d62828";
   msg.style.zIndex = "100000";
-  msg.style.textShadow = "0 0 12px #ff4d6d";
 
   document.body.appendChild(msg);
 }
@@ -73,10 +79,10 @@ function rainHearts() {
   const interval = setInterval(() => {
     const heart = document.createElement("div");
     heart.className = "heart";
-    heart.innerText = "❤️";
+    heart.textContent = "❤️";
 
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = 18 + Math.random() * 24 + "px";
+    heart.style.fontSize = 18 + Math.random() * 18 + "px";
     heart.style.animationDuration = 2 + Math.random() * 3 + "s";
 
     effects.appendChild(heart);
@@ -102,8 +108,8 @@ function popConfetti() {
     confetti.style.backgroundColor =
       colors[Math.floor(Math.random() * colors.length)];
 
-    confetti.style.animationDuration = 2 + Math.random() * 2 + "s";
-    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+    confetti.style.animationDuration =
+      2 + Math.random() * 2 + "s";
 
     effects.appendChild(confetti);
 
