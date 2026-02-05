@@ -19,22 +19,17 @@ noBtn.addEventListener("mouseover", () => {
 // =====================
 const yesBtn = document.getElementById("yes");
 const effects = document.getElementById("effects");
-const gameWindow = document.querySelector(".game-window");
-
-let clicked = false;
+const loveWindow = document.querySelector(".game-window");
 
 yesBtn.addEventListener("click", () => {
-  if (clicked) return;
-  clicked = true;
-
-  // fade box
-  gameWindow.style.transition = "opacity 0.5s, transform 0.5s";
-  gameWindow.style.opacity = "0";
-  gameWindow.style.transform = "scale(0.9)";
+  // hide love window
+  loveWindow.style.transition = "opacity 0.4s, transform 0.4s";
+  loveWindow.style.opacity = "0";
+  loveWindow.style.transform = "scale(0.9)";
 
   setTimeout(() => {
-    gameWindow.style.display = "none";
-  }, 500);
+    loveWindow.style.display = "none";
+  }, 400);
 
   showYayMessage();
   rainHearts();
@@ -43,7 +38,7 @@ yesBtn.addEventListener("click", () => {
 
 
 // =====================
-// YAY message ❤️
+// YAY overlay ❤️
 // =====================
 function showYayMessage() {
   const msg = document.createElement("div");
@@ -52,11 +47,11 @@ function showYayMessage() {
   msg.style.top = "50%";
   msg.style.left = "50%";
   msg.style.transform = "translate(-50%, -50%)";
-  msg.style.fontSize = "42px";
+  msg.style.fontSize = "44px";
   msg.style.color = "#d62828";
   msg.style.fontWeight = "bold";
   msg.style.zIndex = "100000";
-  msg.style.textShadow = "0 0 10px #ff4d6d";
+  msg.style.textShadow = "0 0 12px #ff4d6d";
 
   document.body.appendChild(msg);
 }
@@ -72,7 +67,7 @@ function rainHearts() {
     heart.innerText = "❤️";
 
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = 20 + Math.random() * 20 + "px";
+    heart.style.fontSize = 18 + Math.random() * 24 + "px";
     heart.style.animationDuration = 2 + Math.random() * 3 + "s";
 
     effects.appendChild(heart);
@@ -88,7 +83,7 @@ function rainHearts() {
 // Confetti 🎉
 // =====================
 function popConfetti() {
-  const colors = ["#ff4d6d", "#ffd166", "#06d6a0", "#118ab2", "#ef476f"];
+  const colors = ["#ff4d6d", "#ffd166", "#06d6a0", "#118ab2"];
 
   for (let i = 0; i < 100; i++) {
     const confetti = document.createElement("div");
