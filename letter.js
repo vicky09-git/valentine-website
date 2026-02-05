@@ -14,10 +14,26 @@ const yesBtn = document.getElementById("yes");
 const effects = document.getElementById("effects");
 
 yesBtn.addEventListener("click", () => {
-  document.body.innerHTML = "<h1 style='color:#d62828'>YAYYY ❤️</h1>";
+  showYayMessage();
   rainHearts();
   popConfetti();
 });
+
+/* ❤️ YAY MESSAGE (overlay, not DOM destroy) */
+function showYayMessage() {
+  const msg = document.createElement("div");
+  msg.innerText = "YAYYY ❤️";
+  msg.style.position = "fixed";
+  msg.style.top = "50%";
+  msg.style.left = "50%";
+  msg.style.transform = "translate(-50%, -50%)";
+  msg.style.fontSize = "40px";
+  msg.style.color = "#d62828";
+  msg.style.fontWeight = "bold";
+  msg.style.zIndex = "10000";
+
+  document.body.appendChild(msg);
+}
 
 /* 💖 HEART RAIN */
 function rainHearts() {
@@ -37,7 +53,7 @@ function rainHearts() {
   setTimeout(() => clearInterval(interval), 4000);
 }
 
-/* 🎉 CONFETTI BURST */
+/* 🎉 CONFETTI */
 function popConfetti() {
   const colors = ["#ff4d6d", "#ffd166", "#06d6a0", "#118ab2"];
 
@@ -56,4 +72,3 @@ function popConfetti() {
     setTimeout(() => confetti.remove(), 4000);
   }
 }
-
