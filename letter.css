@@ -34,7 +34,6 @@ body {
 
 .content {
   position: relative;
-  overflow: hidden;
   padding: 15px;
   text-align: center;
 }
