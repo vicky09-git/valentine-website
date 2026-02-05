@@ -74,7 +74,6 @@ button:hover {
   background: #ffe5ec;
 }
 
-/* Hearts & confetti container */
 #effects {
   position: fixed;
   top: 0;
@@ -83,8 +82,9 @@ button:hover {
   height: 100vh;
   pointer-events: none;
   overflow: hidden;
-  z-index: 9999;
+  z-index: 99999; /* 👈 MUST be very high */
 }
+
 
 /* Falling hearts */
 .heart {
