@@ -4,14 +4,23 @@
 const noBtn = document.getElementById("no");
 const container = document.querySelector(".content");
 
-noBtn.addEventListener("mouseover", () => {
-  const maxX = container.clientWidth - noBtn.offsetWidth;
-  const maxY = container.clientHeight - noBtn.offsetHeight;
+noBtn.style.position = "absolute";
 
-  noBtn.style.position = "absolute";
-  noBtn.style.left = Math.random() * maxX + "px";
-  noBtn.style.top = Math.random() * maxY + "px";
+noBtn.addEventListener("mouseenter", () => {
+  const padding = 10;
+
+  const maxX =
+    container.clientWidth - noBtn.offsetWidth - padding;
+  const maxY =
+    container.clientHeight - noBtn.offsetHeight - padding;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
 });
+
 
 
 // =====================
