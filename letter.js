@@ -1,11 +1,11 @@
 const noBtn = document.getElementById("no");
+const container = document.querySelector(".buttons");
 
 noBtn.addEventListener("mouseover", () => {
-  noBtn.style.position = "absolute";
-  noBtn.style.left = Math.random() * 200 + "px";
-  noBtn.style.top = Math.random() * 200 + "px";
-});
+  const maxX = container.clientWidth - noBtn.offsetWidth;
+  const maxY = container.clientHeight - noBtn.offsetHeight;
 
-document.getElementById("yes").addEventListener("click", () => {
-  document.body.innerHTML = "<h1 style='color:#d62828'>YAYYY ❤️</h1>";
+  noBtn.style.position = "absolute";
+  noBtn.style.left = Math.random() * maxX + "px";
+  noBtn.style.top = Math.random() * maxY + "px";
 });
