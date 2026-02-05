@@ -1,17 +1,19 @@
 const noBtn = document.getElementById("no");
-const container = document.querySelector(".content");
+const buttonsBox = document.querySelector(".buttons");
 
-noBtn.addEventListener("mouseover", () => {
-  const maxX = container.clientWidth - noBtn.offsetWidth;
-  const maxY = container.clientHeight - noBtn.offsetHeight;
+noBtn.style.position = "absolute";
 
-  noBtn.style.position = "absolute";
-  noBtn.style.left = Math.random() * 200 + "px";
-  noBtn.style.top = Math.random() * 200 + "px";
-  noBtn.style.left = Math.random() * maxX + "px";
-  noBtn.style.top = Math.random() * maxY + "px";
-});
+noBtn.addEventListener("mouseenter", () => {
+  const padding = 10;
 
-document.getElementById("yes").addEventListener("click", () => {
-  document.body.innerHTML = "<h1 style='color:#d62828'>YAYYY ❤️</h1>";
+  const maxX =
+    buttonsBox.clientWidth - noBtn.offsetWidth - padding;
+  const maxY =
+    buttonsBox.clientHeight - noBtn.offsetHeight - padding;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
 });
