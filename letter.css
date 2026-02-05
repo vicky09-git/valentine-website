@@ -53,6 +53,7 @@ body {
 
 .buttons {
   position: relative;     
+  overflow: hidden;
   height: 60px;           
   display: flex;
   justify-content: space-around;
