@@ -2,14 +2,13 @@ const noBtn = document.getElementById("no");
 const yesBtn = document.getElementById("yes");
 const container = document.querySelector(".buttons");
 
-const SAFE_DISTANCE = 60; // px gap from YES
+const SAFE_DISTANCE = 120;
 
 function moveNoButton() {
   const maxX = container.clientWidth - noBtn.offsetWidth;
   const maxY = container.clientHeight - noBtn.offsetHeight;
 
-  let x, y;
-  let dx, dy;
+  let x, y, dx, dy;
 
   do {
     x = Math.random() * maxX;
@@ -17,7 +16,6 @@ function moveNoButton() {
 
     dx = Math.abs(x - yesBtn.offsetLeft);
     dy = Math.abs(y - yesBtn.offsetTop);
-
   } while (dx < SAFE_DISTANCE && dy < SAFE_DISTANCE);
 
   noBtn.style.position = "absolute";
@@ -25,10 +23,12 @@ function moveNoButton() {
   noBtn.style.top = y + "px";
 }
 
-// Escape logic
+// Escape BEFORE click
 noBtn.addEventListener("mouseenter", moveNoButton);
 noBtn.addEventListener("mousemove", moveNoButton);
-noBtn.addEventListener("click", (e) => {
+
+// 🔒 Hard block click
+noBtn.addEventListener("mousedown", (e) => {
   e.preventDefault();
   moveNoButton();
 });
