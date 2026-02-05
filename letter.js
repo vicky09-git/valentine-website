@@ -1,34 +1,53 @@
 const noBtn = document.getElementById("no");
 const yesBtn = document.getElementById("yes");
 const container = document.querySelector(".buttons");
-const gameWindow = document.querySelector(".game-window");
 
-const SAFE_DISTANCE = 120;
+// minimum gap from YES button (adjust if needed)
+const SAFE_GAP = 50;
 
 function moveNoButton() {
   const maxX = container.clientWidth - noBtn.offsetWidth;
   const maxY = container.clientHeight - noBtn.offsetHeight;
 
-  let x, y, dx, dy;
+  let x, y;
+  let overlap;
 
   do {
     x = Math.random() * maxX;
     y = Math.random() * maxY;
 
-    dx = Math.abs(x - yesBtn.offsetLeft);
-    dy = Math.abs(y - yesBtn.offsetTop);
-  } while (dx < SAFE_DISTANCE && dy < SAFE_DISTANCE);
+    // future NO button box
+    const noLeft = x;
+    const noRight = x + noBtn.offsetWidth;
+    const noTop = y;
+    const noBottom = y + noBtn.offsetHeight;
+
+    // YES button box
+    const yesLeft = yesBtn.offsetLeft - SAFE_GAP;
+    const yesRight = yesBtn.offsetLeft + yesBtn.offsetWidth + SAFE_GAP;
+    const yesTop = yesBtn.offsetTop - SAFE_GAP;
+    const yesBottom = yesBtn.offsetTop + yesBtn.offsetHeight + SAFE_GAP;
+
+    // check overlap
+    overlap = !(
+      noRight < yesLeft ||
+      noLeft > yesRight ||
+      noBottom < yesTop ||
+      noTop > yesBottom
+    );
+
+  } while (overlap);
 
   noBtn.style.position = "absolute";
   noBtn.style.left = x + "px";
   noBtn.style.top = y + "px";
 }
 
-// Escape BEFORE click
+// escape logic
 noBtn.addEventListener("mouseenter", moveNoButton);
 noBtn.addEventListener("mousemove", moveNoButton);
 
-// 🔒 Hard block click
+// block click completely
 noBtn.addEventListener("mousedown", (e) => {
   e.preventDefault();
   moveNoButton();
