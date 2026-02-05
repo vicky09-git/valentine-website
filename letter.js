@@ -2,42 +2,32 @@ const noBtn = document.getElementById("no");
 const yesBtn = document.getElementById("yes");
 const container = document.querySelector(".buttons");
 
-function isOverlapping(rect1, rect2) {
-  return !(
-    rect1.right < rect2.left ||
-    rect1.left > rect2.right ||
-    rect1.bottom < rect2.top ||
-    rect1.top > rect2.bottom
-  );
-}
+const SAFE_DISTANCE = 60; // px gap from YES
 
 function moveNoButton() {
-  const containerRect = container.getBoundingClientRect();
-  const yesRect = yesBtn.getBoundingClientRect();
+  const maxX = container.clientWidth - noBtn.offsetWidth;
+  const maxY = container.clientHeight - noBtn.offsetHeight;
 
-  noBtn.style.position = "absolute";
-
-  let attempts = 0;
-  let x, y, noRect;
+  let x, y;
+  let dx, dy;
 
   do {
-    x = Math.random() * (containerRect.width - noBtn.offsetWidth);
-    y = Math.random() * (containerRect.height - noBtn.offsetHeight);
+    x = Math.random() * maxX;
+    y = Math.random() * maxY;
 
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
+    dx = Math.abs(x - yesBtn.offsetLeft);
+    dy = Math.abs(y - yesBtn.offsetTop);
 
-    noRect = noBtn.getBoundingClientRect();
-    attempts++;
+  } while (dx < SAFE_DISTANCE && dy < SAFE_DISTANCE);
 
-  } while (isOverlapping(noRect, yesRect) && attempts < 50);
+  noBtn.style.position = "absolute";
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
 }
 
-// Escape BEFORE click
+// Escape logic
 noBtn.addEventListener("mouseenter", moveNoButton);
 noBtn.addEventListener("mousemove", moveNoButton);
-
-// Even if clicked, escape
 noBtn.addEventListener("click", (e) => {
   e.preventDefault();
   moveNoButton();
