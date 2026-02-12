@@ -37,15 +37,17 @@ document.addEventListener("DOMContentLoaded", () => {
   /* YES CLICK */
   /* ============================= */
 
-  yesBtn.addEventListener("click", () => {
+yesBtn.addEventListener("click", () => {
 
-    buttonsDiv.remove();
-    document.querySelector(".question").remove();
-    document.querySelector(".character").remove();
+  const gameWindow = document.querySelector(".game-window");
 
-    const message = document.createElement("div");
-      message.innerHTML = `
-    <h3>Yayyyy ❤️</h2>
+  // Remove the entire game window box
+  gameWindow.remove();
+
+  // Create full-screen message
+  const message = document.createElement("div");
+  message.innerHTML = `
+    <h3>Yayyyy ❤️</h3>
     <h4>You are now official Valentine of</h4>
     <h4>Vivek Aggarwal 💕</h4>
     <p>
@@ -54,22 +56,28 @@ document.addEventListener("DOMContentLoaded", () => {
     </p>
     <h4>Happy Valentine's Day ❤️</h4>
   `;
-    message.style.width = "650px";   // 🔥 Increased width
+
+  // Center it on screen
+  message.style.position = "fixed";
+  message.style.top = "50%";
+  message.style.left = "50%";
+  message.style.transform = "translate(-50%, -50%)";
+  message.style.width = "650px";
   message.style.maxWidth = "90%";
   message.style.padding = "40px";
-  message.style.margin = "40px auto";
   message.style.background = "#f8c8dc";
   message.style.border = "6px solid #d62828";
   message.style.borderRadius = "20px";
   message.style.textAlign = "center";
   message.style.color = "#d62828";
+  message.style.zIndex = "1000";
 
-    container.appendChild(message);
+  document.body.appendChild(message);
 
-    explodeHearts(80);
-    explodeConfetti(150);
-    startHeartRain();
-  });
+  explodeHearts(80);
+  explodeConfetti(150);
+  startHeartRain();
+});
 
   /* ============================= */
   /* HEART EXPLOSION */
