@@ -46,7 +46,7 @@ yesBtn.addEventListener("click", () => {
   const message = document.createElement("div");
   message.innerHTML = `
     <h3>Yayyyy ❤️</h3>
-    <h4>You are now official Valentine of</h4>
+    <h4>You are now the official Valentine of</h4>
     <h4>Vivek Aggarwal 💕</h4>
     <p>
       I choose you today, I will choose you tomorrow.<br>
