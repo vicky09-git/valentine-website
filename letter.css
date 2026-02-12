@@ -15,10 +15,9 @@ body {
   border: 6px solid #d62828;
   width: 320px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  z-index: 2;
 }
 
-/* EFFECT LAYER */
+/* EFFECT LAYER (ALWAYS ON TOP) */
 #effects {
   position: fixed;
   top: 0;
@@ -27,7 +26,7 @@ body {
   height: 100%;
   pointer-events: none;
   overflow: hidden;
-  z-index: 1;
+  z-index: 9999; /* Always above */
 }
 
 /* TITLE BAR */
@@ -47,8 +46,10 @@ body {
 }
 
 .content {
+  position: relative;
   padding: 15px;
   text-align: center;
+  min-height: 300px;
 }
 
 .question {
@@ -77,12 +78,13 @@ body {
   font-size: 12px;
   font-weight: bold;
   cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
-/* PARTICLES */
+/* HEART EXPLOSION */
 .particle {
   position: absolute;
-  font-size: 20px;
+  font-size: 22px;
   animation: explode 1s ease-out forwards;
 }
 
@@ -93,8 +95,8 @@ body {
   }
   to {
     transform: translate(
-      calc(-100px + 200px * var(--x)),
-      calc(-100px + 200px * var(--y))
+      calc(-150px + 300px * var(--x)),
+      calc(-150px + 300px * var(--y))
     );
     opacity: 0;
   }
@@ -105,18 +107,17 @@ body {
   position: absolute;
   width: 8px;
   height: 8px;
-  background: red;
   animation: fall 3s linear forwards;
 }
 
 @keyframes fall {
   to {
-    transform: translateY(100vh);
+    transform: translateY(100vh) rotate(720deg);
     opacity: 0;
   }
 }
 
-/* CONTINUOUS HEART RAIN */
+/* HEART RAIN */
 .rain-heart {
   position: absolute;
   font-size: 18px;
