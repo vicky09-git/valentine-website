@@ -1,4 +1,5 @@
 const noBtn = document.getElementById("no");
+let yesScale = 1;
 
 /* ============================= */
 /* NO BUTTON MOVEMENT (Desktop + Mobile) */
@@ -18,7 +19,12 @@ function moveNoButton() {
   noBtn.style.position = "absolute";
   noBtn.style.left = randomX + "px";
   noBtn.style.top = randomY + "px";
+
+  // Make YES grow
+  yesScale += 0.08;
+  yesBtn.style.transform = `scale(${yesScale})`;
 }
+
 
 
 
