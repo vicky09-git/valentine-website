@@ -1,7 +1,11 @@
 const noBtn = document.getElementById("no");
 
-noBtn.addEventListener("mouseover", moveNoButton);
-noBtn.addEventListener("click", moveNoButton);
+/* ============================= */
+/* NO BUTTON MOVEMENT (Desktop + Mobile) */
+/* ============================= */
+
+noBtn.addEventListener("pointerenter", moveNoButton);
+noBtn.addEventListener("pointerdown", moveNoButton);
 
 function moveNoButton() {
 
@@ -15,6 +19,7 @@ function moveNoButton() {
   noBtn.style.left = randomX + "px";
   noBtn.style.top = randomY + "px";
 }
+
 
 
 const yesBtn = document.getElementById("yes");
