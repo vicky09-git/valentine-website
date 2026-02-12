@@ -13,7 +13,6 @@ yesBtn.addEventListener("click", () => {
   document.querySelector(".character").remove();
 
   const message = document.createElement("h2");
-  message.innerHTML = "Yayyyy ❤️<br>You are officially my Valentine 💕";
   message.innerHTML = "Yayyyy ❤️<br>You are officially the Valentine of Vivek Aggarwal💕";
   message.style.color = "#d62828";
   message.style.marginTop = "40px";
