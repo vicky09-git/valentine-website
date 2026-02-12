@@ -50,8 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     container.appendChild(message);
 
-    explodeHearts(50);
-    explodeConfetti(120);
+    explodeHearts(80);
+    explodeConfetti(150);
     startHeartRain();
   });
 
@@ -119,7 +119,7 @@ function explodeConfetti(count) {
   rainInterval = setInterval(() => {
 
     // Create multiple hearts at once
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 10; i++) {
 
       const heart = document.createElement("div");
       heart.innerHTML = "❤️";
@@ -136,7 +136,7 @@ function explodeConfetti(count) {
       setTimeout(() => heart.remove(), 3000);
     }
 
-  }, 120); // Faster spawn rate
+  }, 80); // Faster spawn rate
 }
 
 
