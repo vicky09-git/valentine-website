@@ -1,33 +1,3 @@
-const noBtn = document.getElementById("no");
-let yesScale = 1;
-
-/* ============================= */
-/* NO BUTTON MOVEMENT (Desktop + Mobile) */
-/* ============================= */
-
-noBtn.addEventListener("pointerenter", moveNoButton);
-noBtn.addEventListener("pointerdown", moveNoButton);
-
-function moveNoButton() {
-
-  const maxX = container.clientWidth - noBtn.offsetWidth;
-  const maxY = container.clientHeight - noBtn.offsetHeight;
-
-  const randomX = Math.random() * maxX;
-  const randomY = Math.random() * maxY;
-
-  noBtn.style.position = "absolute";
-  noBtn.style.left = randomX + "px";
-  noBtn.style.top = randomY + "px";
-
-  // Make YES grow
-  yesScale += 0.08;
-  yesBtn.style.transform = `scale(${yesScale})`;
-}
-
-
-
-
 const yesBtn = document.getElementById("yes");
 const buttonsDiv = document.querySelector(".buttons");
 const container = document.querySelector(".content");
