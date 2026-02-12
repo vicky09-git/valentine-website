@@ -44,7 +44,16 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".character").remove();
 
     const message = document.createElement("h2");
-    message.innerHTML = "Yayyyy ❤️<br>You are officially the Valentine of Vivek Aggarwal 💕";
+      message.innerHTML = `
+    <h1>Yayyyy ❤️</h1>
+    <h2>You are now official Valentine of</h2>
+    <h3>Vivek Aggarwal 💕</h3>
+    <p>
+      I choose you today, I will choose you tomorrow.<br>
+      And I will keep choosing you – always.
+    </p>
+    <h4>Happy Valentine's Day ❤️</h4>
+  `;
     message.style.color = "#d62828";
     message.style.marginTop = "40px";
 
@@ -119,7 +128,7 @@ function explodeConfetti(count) {
   rainInterval = setInterval(() => {
 
     // Create multiple hearts at once
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 8; i++) {
 
       const heart = document.createElement("div");
       heart.innerHTML = "❤️";
@@ -136,7 +145,7 @@ function explodeConfetti(count) {
       setTimeout(() => heart.remove(), 3000);
     }
 
-  }, 80); // Faster spawn rate
+  }, 100); // Faster spawn rate
 }
 
 
