@@ -67,6 +67,7 @@ body {
   font-weight: bold;
   border-radius: 0;
   cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 .buttons button:hover {
@@ -99,12 +100,8 @@ body {
 .particle {
   position: absolute;
   font-size: 24px;
-  animation: fadeOut 1s ease-out forwards;
-}
-
-@keyframes fadeOut {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
+  transition: transform 1s ease-out, opacity 1s ease-out;
+  opacity: 1;
 }
 
 /* ============================= */
@@ -115,6 +112,8 @@ body {
   position: absolute;
   width: 8px;
   height: 14px;
+  transition: transform 1s ease-out, opacity 1s ease-out;
+  opacity: 1;
 }
 
 .confetti:nth-child(4n) { background: #ff4d6d; }
