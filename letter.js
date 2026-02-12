@@ -36,16 +36,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   yesBtn.addEventListener("click", function () {
 
-    // Remove buttons
-    if (buttonsDiv) buttonsDiv.remove();
-
-    // Remove question
-    const question = document.querySelector(".question");
-    if (question) question.remove();
-
-    // Remove image
-    const character = document.querySelector(".character");
-    if (character) character.remove();
+    // Remove question, image, buttons
+    document.querySelector(".question")?.remove();
+    document.querySelector(".character")?.remove();
+    buttonsDiv?.remove();
 
     // Show success message
     const message = document.createElement("h2");
@@ -55,8 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     container.appendChild(message);
 
-    // Trigger effects
-    createHearts(30);
+    // Explosion effects
+    createHearts(40);
     createConfetti(80);
   });
 
@@ -65,17 +59,27 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ============================= */
 
   function createHearts(count) {
+
+    const rect = container.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
     for (let i = 0; i < count; i++) {
       const heart = document.createElement("div");
       heart.innerHTML = "❤️";
       heart.classList.add("particle");
 
-      heart.style.left = Math.random() * window.innerWidth + "px";
-      heart.style.top = Math.random() * window.innerHeight + "px";
+      heart.style.left = centerX + "px";
+      heart.style.top = centerY + "px";
+
+      const x = Math.random() * 300 - 150;
+      const y = Math.random() * 300 - 150;
+
+      heart.style.transform = `translate(${x}px, ${y}px)`;
 
       effects.appendChild(heart);
 
-      setTimeout(() => heart.remove(), 2000);
+      setTimeout(() => heart.remove(), 1000);
     }
   }
 
@@ -84,18 +88,27 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ============================= */
 
   function createConfetti(count) {
+
+    const rect = container.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
     for (let i = 0; i < count; i++) {
       const confetti = document.createElement("div");
       confetti.classList.add("confetti");
 
-      confetti.style.left = Math.random() * window.innerWidth + "px";
-      confetti.style.top = "-10px";
+      confetti.style.left = centerX + "px";
+      confetti.style.top = centerY + "px";
 
-      confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+      const x = Math.random() * 400 - 200;
+      const y = Math.random() * 400 - 200;
+
+      confetti.style.transform =
+        `translate(${x}px, ${y}px) rotate(${Math.random() * 720}deg)`;
 
       effects.appendChild(confetti);
 
-      setTimeout(() => confetti.remove(), 3000);
+      setTimeout(() => confetti.remove(), 1000);
     }
   }
 
