@@ -1,120 +1,124 @@
-const yesBtn = document.getElementById("yes");
-const noBtn = document.getElementById("no");
-const buttonsDiv = document.querySelector(".buttons");
-const container = document.querySelector(".content");
-const effects = document.getElementById("effects");
+document.addEventListener("DOMContentLoaded", () => {
 
-let yesScale = 1;
-let rainInterval;
+  const yesBtn = document.getElementById("yes");
+  const noBtn = document.getElementById("no");
+  const buttonsDiv = document.querySelector(".buttons");
+  const container = document.querySelector(".content");
+  const effects = document.getElementById("effects");
 
-/* ============================= */
-/* NO BUTTON MOVEMENT (Mobile + Desktop) */
-/* ============================= */
+  let yesScale = 1;
+  let rainInterval;
 
-noBtn.addEventListener("pointerenter", moveNoButton);
-noBtn.addEventListener("pointerdown", moveNoButton);
+  /* ============================= */
+  /* NO BUTTON MOVEMENT (Mobile + Desktop) */
+  /* ============================= */
 
-function moveNoButton() {
+  noBtn.addEventListener("pointerenter", moveNoButton);
+  noBtn.addEventListener("pointerdown", moveNoButton);
 
-  const maxX = container.clientWidth - noBtn.offsetWidth;
-  const maxY = container.clientHeight - noBtn.offsetHeight;
+  function moveNoButton() {
 
-  const randomX = Math.random() * maxX;
-  const randomY = Math.random() * maxY;
+    const maxX = container.clientWidth - noBtn.offsetWidth;
+    const maxY = container.clientHeight - noBtn.offsetHeight;
 
-  noBtn.style.position = "absolute";
-  noBtn.style.left = randomX + "px";
-  noBtn.style.top = randomY + "px";
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
 
-  // YES grows
-  yesScale += 0.08;
-  yesBtn.style.transform = `scale(${yesScale})`;
-}
+    noBtn.style.position = "absolute";
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
 
-/* ============================= */
-/* YES CLICK */
-/* ============================= */
+    // YES grows
+    yesScale += 0.08;
+    yesBtn.style.transform = `scale(${yesScale})`;
+  }
 
-yesBtn.addEventListener("click", () => {
+  /* ============================= */
+  /* YES CLICK */
+  /* ============================= */
 
-  buttonsDiv.remove();
-  document.querySelector(".question").remove();
-  document.querySelector(".character").remove();
+  yesBtn.addEventListener("click", () => {
 
-  const message = document.createElement("h2");
-  message.innerHTML = "Yayyyy ❤️<br>You are officially the Valentine of Vivek Aggarwal 💕";
-  message.style.color = "#d62828";
-  message.style.marginTop = "40px";
+    buttonsDiv.remove();
+    document.querySelector(".question").remove();
+    document.querySelector(".character").remove();
 
-  container.appendChild(message);
+    const message = document.createElement("h2");
+    message.innerHTML = "Yayyyy ❤️<br>You are officially the Valentine of Vivek Aggarwal 💕";
+    message.style.color = "#d62828";
+    message.style.marginTop = "40px";
 
-  explodeHearts(30);
-  explodeConfetti(80);
-  startHeartRain();
+    container.appendChild(message);
+
+    explodeHearts(30);
+    explodeConfetti(80);
+    startHeartRain();
+  });
+
+  /* ============================= */
+  /* HEART EXPLOSION */
+  /* ============================= */
+
+  function explodeHearts(count) {
+    for (let i = 0; i < count; i++) {
+
+      const heart = document.createElement("div");
+      heart.innerHTML = "❤️";
+      heart.classList.add("particle");
+
+      heart.style.left = "50%";
+      heart.style.top = "50%";
+
+      heart.style.setProperty("--x", Math.random());
+      heart.style.setProperty("--y", Math.random());
+
+      effects.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 1000);
+    }
+  }
+
+  /* ============================= */
+  /* CONFETTI */
+  /* ============================= */
+
+  function explodeConfetti(count) {
+    for (let i = 0; i < count; i++) {
+
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+
+      confetti.style.left = Math.random() * 100 + "vw";
+      confetti.style.background =
+        `hsl(${Math.random() * 360}, 80%, 60%)`;
+
+      effects.appendChild(confetti);
+
+      setTimeout(() => confetti.remove(), 3000);
+    }
+  }
+
+  /* ============================= */
+  /* CONTINUOUS HEART RAIN */
+  /* ============================= */
+
+  function startHeartRain() {
+
+    if (rainInterval) return;
+
+    rainInterval = setInterval(() => {
+
+      const heart = document.createElement("div");
+      heart.innerHTML = "❤️";
+      heart.classList.add("rain-heart");
+
+      heart.style.left = Math.random() * 100 + "vw";
+
+      effects.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 4000);
+
+    }, 300);
+  }
+
 });
-
-/* ============================= */
-/* HEART EXPLOSION */
-/* ============================= */
-
-function explodeHearts(count) {
-  for (let i = 0; i < count; i++) {
-
-    const heart = document.createElement("div");
-    heart.innerHTML = "❤️";
-    heart.classList.add("particle");
-
-    heart.style.left = "50%";
-    heart.style.top = "50%";
-
-    heart.style.setProperty("--x", Math.random());
-    heart.style.setProperty("--y", Math.random());
-
-    effects.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 1000);
-  }
-}
-
-/* ============================= */
-/* CONFETTI */
-/* ============================= */
-
-function explodeConfetti(count) {
-  for (let i = 0; i < count; i++) {
-
-    const confetti = document.createElement("div");
-    confetti.classList.add("confetti");
-
-    confetti.style.left = Math.random() * 100 + "vw";
-    confetti.style.background =
-      `hsl(${Math.random() * 360}, 80%, 60%)`;
-
-    effects.appendChild(confetti);
-
-    setTimeout(() => confetti.remove(), 3000);
-  }
-}
-
-/* ============================= */
-/* CONTINUOUS HEART RAIN */
-/* ============================= */
-
-function startHeartRain() {
-
-  if (rainInterval) return;
-
-  rainInterval = setInterval(() => {
-
-    const heart = document.createElement("div");
-    heart.innerHTML = "❤️";
-    heart.classList.add("rain-heart");
-
-    heart.style.left = Math.random() * 100 + "vw";
-
-    effects.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 4000);
-
-  }, 300);
-}
