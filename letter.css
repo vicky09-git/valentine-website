@@ -9,8 +9,8 @@ body {
 }
 
 .game-window {
-  position: relative;     
-  overflow: hidden; 
+  position: relative;
+  overflow: hidden;
   background: #ffccd5;
   border: 6px solid #d62828;
   width: 320px;
@@ -58,30 +58,24 @@ body {
   margin-top: 12px;
 }
 
-/* Base button */
 .buttons button {
   background: #fff;
   color: #000;
   border: 3px solid #d62828;
-  padding: 4px 14px;
-  font-size: 12px;
+  padding: 6px 18px;
+  font-size: 13px;
   font-weight: bold;
-  border-radius: 0;           /* sharp corners */
+  border-radius: 0;
   cursor: pointer;
-  box-shadow: none;
 }
 
-/* Hover effect (subtle) */
 .buttons button:hover {
   background: #ffe5ec;
 }
 
-/* Active (pressed) */
 .buttons button:active {
   transform: translateY(1px);
 }
-
-
 
 /* ============================= */
 /* EFFECTS LAYER */
@@ -105,18 +99,12 @@ body {
 .particle {
   position: absolute;
   font-size: 24px;
-  animation: floatUp 2s ease-out forwards;
+  animation: fadeOut 1s ease-out forwards;
 }
 
-@keyframes floatUp {
-  0% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-150px) scale(1.5);
-  }
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 /* ============================= */
@@ -127,22 +115,9 @@ body {
   position: absolute;
   width: 8px;
   height: 14px;
-  animation: fall 3s linear forwards;
 }
 
-/* Different colors */
 .confetti:nth-child(4n) { background: #ff4d6d; }
 .confetti:nth-child(4n+1) { background: #ffbe0b; }
 .confetti:nth-child(4n+2) { background: #3a86ff; }
 .confetti:nth-child(4n+3) { background: #8338ec; }
-
-@keyframes fall {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  100% {
-    transform: translateY(100vh) rotate(720deg);
-  }
-}
-
-
