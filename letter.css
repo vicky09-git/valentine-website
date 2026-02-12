@@ -102,20 +102,28 @@ body {
   }
 }
 
-/* CONFETTI */
+/* CONFETTI BURST */
 .confetti {
   position: absolute;
   width: 8px;
   height: 8px;
-  animation: fall 3s linear forwards;
+  animation: confettiExplode 1s ease-out forwards;
 }
 
-@keyframes fall {
+@keyframes confettiExplode {
+  from {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
   to {
-    transform: translateY(100vh) rotate(720deg);
+    transform: translate(
+      calc(-200px + 400px * var(--x)),
+      calc(-200px + 400px * var(--y))
+    ) rotate(720deg);
     opacity: 0;
   }
 }
+
 
 /* HEART RAIN */
 .rain-heart {
