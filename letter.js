@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const buttonsDiv = document.querySelector(".buttons");
 
   let yesScale = 1;
+  let rainInterval = null;
 
   /* ============================= */
   /* NO BUTTON MOVEMENT */
@@ -49,6 +50,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     createHearts(40);
     createConfetti(80);
+
+    // Start continuous rain after explosion
+    startHeartRain();
   });
 
   /* ============================= */
@@ -115,6 +119,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
       setTimeout(() => confetti.remove(), 1000);
     }
+  }
+
+  /* ============================= */
+  /* CONTINUOUS HEART RAIN */
+  /* ============================= */
+
+  function startHeartRain() {
+
+    rainInterval = setInterval(() => {
+
+      const heart = document.createElement("div");
+      heart.innerHTML = "❤️";
+      heart.classList.add("rain-heart");
+
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.top = "-30px";
+
+      effects.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 4000);
+
+    }, 200); // speed of rain (lower = heavier rain)
   }
 
 });
