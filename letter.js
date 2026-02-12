@@ -82,21 +82,29 @@ document.addEventListener("DOMContentLoaded", () => {
   /* CONFETTI */
   /* ============================= */
 
-  function explodeConfetti(count) {
-    for (let i = 0; i < count; i++) {
+function explodeConfetti(count) {
+  for (let i = 0; i < count; i++) {
+    const confetti = document.createElement("div");
+    confetti.classList.add("confetti");
 
-      const confetti = document.createElement("div");
-      confetti.classList.add("confetti");
+    // Start at center
+    confetti.style.left = "50%";
+    confetti.style.top = "50%";
 
-      confetti.style.left = Math.random() * 100 + "vw";
-      confetti.style.background =
-        `hsl(${Math.random() * 360}, 80%, 60%)`;
+    // Random direction
+    confetti.style.setProperty("--x", Math.random());
+    confetti.style.setProperty("--y", Math.random());
 
-      effects.appendChild(confetti);
+    // Random color
+    confetti.style.background =
+      `hsl(${Math.random() * 360}, 80%, 60%)`;
 
-      setTimeout(() => confetti.remove(), 3000);
-    }
+    effects.appendChild(confetti);
+
+    setTimeout(() => confetti.remove(), 1000);
   }
+}
+
 
   /* ============================= */
   /* CONTINUOUS HEART RAIN */
