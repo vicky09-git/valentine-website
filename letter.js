@@ -36,12 +36,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   yesBtn.addEventListener("click", function () {
 
-    // Remove question, image, buttons
     document.querySelector(".question")?.remove();
     document.querySelector(".character")?.remove();
     buttonsDiv?.remove();
 
-    // Show success message
     const message = document.createElement("h2");
     message.innerHTML = "Yayyyy ❤️<br>You are officially my Valentine 💕";
     message.style.color = "#d62828";
@@ -49,7 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     container.appendChild(message);
 
-    // Explosion effects
     createHearts(40);
     createConfetti(80);
   });
@@ -65,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const centerY = rect.top + rect.height / 2;
 
     for (let i = 0; i < count; i++) {
+
       const heart = document.createElement("div");
       heart.innerHTML = "❤️";
       heart.classList.add("particle");
@@ -72,12 +70,15 @@ document.addEventListener("DOMContentLoaded", function () {
       heart.style.left = centerX + "px";
       heart.style.top = centerY + "px";
 
-      const x = Math.random() * 300 - 150;
-      const y = Math.random() * 300 - 150;
-
-      heart.style.transform = `translate(${x}px, ${y}px)`;
-
       effects.appendChild(heart);
+
+      const x = Math.random() * 400 - 200;
+      const y = Math.random() * 400 - 200;
+
+      setTimeout(() => {
+        heart.style.transform = `translate(${x}px, ${y}px)`;
+        heart.style.opacity = "0";
+      }, 10);
 
       setTimeout(() => heart.remove(), 1000);
     }
@@ -94,19 +95,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const centerY = rect.top + rect.height / 2;
 
     for (let i = 0; i < count; i++) {
+
       const confetti = document.createElement("div");
       confetti.classList.add("confetti");
 
       confetti.style.left = centerX + "px";
       confetti.style.top = centerY + "px";
 
-      const x = Math.random() * 400 - 200;
-      const y = Math.random() * 400 - 200;
-
-      confetti.style.transform =
-        `translate(${x}px, ${y}px) rotate(${Math.random() * 720}deg)`;
-
       effects.appendChild(confetti);
+
+      const x = Math.random() * 500 - 250;
+      const y = Math.random() * 500 - 250;
+
+      setTimeout(() => {
+        confetti.style.transform =
+          `translate(${x}px, ${y}px) rotate(${Math.random() * 720}deg)`;
+        confetti.style.opacity = "0";
+      }, 10);
 
       setTimeout(() => confetti.remove(), 1000);
     }
