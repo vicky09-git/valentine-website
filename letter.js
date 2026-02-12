@@ -50,8 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     container.appendChild(message);
 
-    explodeHearts(30);
-    explodeConfetti(80);
+    explodeHearts(50);
+    explodeConfetti(120);
     startHeartRain();
   });
 
@@ -110,23 +110,34 @@ function explodeConfetti(count) {
   /* CONTINUOUS HEART RAIN */
   /* ============================= */
 
+
+
   function startHeartRain() {
 
-    if (rainInterval) return;
+  if (rainInterval) return;
 
-    rainInterval = setInterval(() => {
+  rainInterval = setInterval(() => {
+
+    // Create multiple hearts at once
+    for (let i = 0; i < 6; i++) {
 
       const heart = document.createElement("div");
       heart.innerHTML = "❤️";
       heart.classList.add("rain-heart");
 
+      // Random horizontal position
       heart.style.left = Math.random() * 100 + "vw";
+
+      // Random size (more natural look)
+      heart.style.fontSize = (16 + Math.random() * 18) + "px";
 
       effects.appendChild(heart);
 
-      setTimeout(() => heart.remove(), 4000);
+      setTimeout(() => heart.remove(), 3000);
+    }
 
-    }, 300);
-  }
+  }, 120); // Faster spawn rate
+}
+
 
 });
