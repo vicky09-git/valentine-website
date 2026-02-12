@@ -39,10 +39,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 yesBtn.addEventListener("click", () => {
 
-  const gameWindow = document.querySelector(".game-window");
-
-  // Remove the entire game window box
-  gameWindow.remove();
+  document.body.innerHTML = `
+    <div id="effects"></div>
+  `;
 
   // Create full-screen message
   const message = document.createElement("div");
