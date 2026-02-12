@@ -45,9 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const message = document.createElement("h2");
       message.innerHTML = `
-    <h1>Yayyyy ❤️</h1>
-    <h2>You are now official Valentine of</h2>
-    <h3>Vivek Aggarwal 💕</h3>
+    <h3>Yayyyy ❤️</h2>
+    <h4>You are now official Valentine of</h4>
+    <h4>Vivek Aggarwal 💕</h4>
     <p>
       I choose you today, I will choose you tomorrow.<br>
       And I will keep choosing you – always.
@@ -145,7 +145,7 @@ function explodeConfetti(count) {
       setTimeout(() => heart.remove(), 3000);
     }
 
-  }, 100); // Faster spawn rate
+  }, 80); // Faster spawn rate
 }
 
 
