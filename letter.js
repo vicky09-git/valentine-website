@@ -1,33 +1,31 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const noBtn = document.getElementById("no");
-  const content = document.querySelector(".content");
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const container = document.querySelector(".content");
 
-  function moveButton() {
-    const contentRect = content.getBoundingClientRect();
+let yesScale = 1;
 
-    const maxX = content.clientWidth - noBtn.offsetWidth;
-    const maxY = content.clientHeight - noBtn.offsetHeight;
+noBtn.addEventListener("mouseover", moveNoButton);
+noBtn.addEventListener("click", moveNoButton); // extra safety for mobile
 
-    const randomX = Math.max(0, Math.random() * maxX);
-    const randomY = Math.max(0, Math.random() * maxY);
+function moveNoButton() {
+  // Get container boundaries
+  const containerRect = container.getBoundingClientRect();
+  const btnRect = noBtn.getBoundingClientRect();
 
-    noBtn.style.position = "absolute";
-    noBtn.style.left = randomX + "px";
-    noBtn.style.top = randomY + "px";
-  }
+  // Calculate max allowed positions
+  const maxX = container.clientWidth - btnRect.width;
+  const maxY = container.clientHeight - btnRect.height;
 
-  // Move when mouse enters button
-  noBtn.addEventListener("mouseenter", moveButton);
+  // Generate random position
+  const randomX = Math.random() * maxX;
+  const randomY = Math.random() * maxY;
 
-  // Prevent click
-  noBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    moveButton();
-  });
+  // Apply movement
+  noBtn.style.position = "absolute";
+  noBtn.style.left = randomX + "px";
+  noBtn.style.top = randomY + "px";
 
-  // Mobile support
-  noBtn.addEventListener("touchstart", (e) => {
-    e.preventDefault();
-    moveButton();
-  });
-});
+  // Optional: make YES button slightly bigger every time 😈
+  yesScale += 0.05;
+  yesBtn.style.transform = `scale(${yesScale})`;
+}
