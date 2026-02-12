@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".question").remove();
     document.querySelector(".character").remove();
 
-    const message = document.createElement("h2");
+    const message = document.createElement("div");
       message.innerHTML = `
     <h3>Yayyyy ❤️</h2>
     <h4>You are now official Valentine of</h4>
@@ -54,8 +54,15 @@ document.addEventListener("DOMContentLoaded", () => {
     </p>
     <h4>Happy Valentine's Day ❤️</h4>
   `;
-    message.style.color = "#d62828";
-    message.style.marginTop = "40px";
+    message.style.width = "650px";   // 🔥 Increased width
+  message.style.maxWidth = "90%";
+  message.style.padding = "40px";
+  message.style.margin = "40px auto";
+  message.style.background = "#f8c8dc";
+  message.style.border = "6px solid #d62828";
+  message.style.borderRadius = "20px";
+  message.style.textAlign = "center";
+  message.style.color = "#d62828";
 
     container.appendChild(message);
 
